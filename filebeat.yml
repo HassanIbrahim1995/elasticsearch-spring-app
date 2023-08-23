@@ -1,0 +1,14 @@
+# This is a Filebeat configuration file. Filebeat is responsible for collecting
+# logs from specified paths and forwarding them for processing and indexing.
+
+filebeat.inputs:
+  - type: log              # This denotes that we're reading log files.
+    enabled: true          # This input is enabled. If set to false, Filebeat won't collect logs from the specified paths.
+    paths:
+      - /var/lib/docker/containers/*/*.log   # Path to Docker container logs. Filebeat will read logs from all containers.
+
+# Output configuration: Where should Filebeat send the logs it collects?
+
+output.logstash:
+  hosts: ["logstash:5000"] # Filebeat will forward logs to Logstash at this address.
+  # The address uses the Docker service name 'logstash' and the port '5000'.

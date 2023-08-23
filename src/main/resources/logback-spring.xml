@@ -1,0 +1,34 @@
+<configuration>
+
+    <!-- ======================================== -->
+    <!-- Appender Configurations                  -->
+    <!-- ======================================== -->
+
+    <!-- Logstash TCP Socket Appender Configuration -->
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <!-- Destination for logs -->
+        <destination>logstash:5000</destination>
+
+        <!-- Encoder Configuration -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+
+    <!-- Console Appender Configuration -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- Pattern for console logs -->
+        <encoder>
+            <pattern>%d{ISO8601} %5p %t %c{2}:%L - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ======================================== -->
+    <!-- Root Logger Configuration                -->
+    <!-- ======================================== -->
+
+    <root level="INFO">
+        <!-- Appenders to use for root logger -->
+        <appender-ref ref="LOGSTASH" /> to see
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>
