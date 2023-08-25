@@ -42,6 +42,8 @@ services:
       - elasticsearch
       - kibana
       - logstash
+      - filebeat
+
   filebeat:
     image: docker.elastic.co/beats/filebeat:7.15.0
     volumes:
